@@ -362,65 +362,69 @@
       
         
           
-            <ol>
-<li><p>选择排序</p>
-<p>`</p>
+            <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><p>#1.  选择排序</p>
+<p>  `</p>
 <pre><code>public class select {
-</code></pre><p>   public   static  void main(String [] args)</p>
-<p>{</p>
-<pre><code>int a[]={1,3,5,9,10,27,19,20,4,10};
-for(int i=0;i&lt;a.length;i++)
-{
-    for(int j=i+1;j&lt;a.length;j++)
-    {
-        if(a[i]&gt;a[j]){
-            int temp=a[i];
-            a[i]=a[j];
-            a[j]=temp;
-        }
+   public   static  void main(String [] args)
 
+{
+    int a[]={1,3,5,9,10,27,19,20,4,10};
+    for(int i=0;i&lt;a.length;i++)
+    {
+        for(int j=i+1;j&lt;a.length;j++)
+        {
+            if(a[i]&gt;a[j]){
+                int temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+
+        }
+    }
+    for(int i=0;i&lt;a.length;i++){
+        System.out.println(a[i]);
     }
 }
-for(int i=0;i&lt;a.length;i++){
-    System.out.println(a[i]);
-}
-</code></pre><p>}<br>}`</p>
-</li>
-<li><p>快速排序<br>`<br> public class Quick {</p>
-<p>  public static int partion(int[] a,int left,int right)<br>{</p>
-<pre><code>int pivokey=a[left];
-int piopointer=left;
-while (left&lt;right)
+</code></pre><p> }`</p>
+<p>#2.  快速排序<br>    `<br>     public class Quick {</p>
+<pre><code>  public static int partion(int[] a,int left,int right)
 {
-    while (left&lt;right&amp;&amp;a[right]&gt;=pivokey)
-        right--;
-    while (left&lt;right&amp;&amp;a[left]&lt;pivokey)
-        left++;
-    swap(a,left,right);
+    int pivokey=a[left];
+    int piopointer=left;
+    while (left&lt;right)
+    {
+        while (left&lt;right&amp;&amp;a[right]&gt;=pivokey)
+            right--;
+        while (left&lt;right&amp;&amp;a[left]&lt;pivokey)
+            left++;
+        swap(a,left,right);
+    }
+
+    swap(a,piopointer,left);
+    return left;
+}
+public static void quickSort(int[] a, int left, int right) {
+    if(left &gt;= right)
+        return ;
+    int pivotPos = partion(a, left, right);
+    quickSort(a, left, pivotPos-1);
+    quickSort(a, pivotPos+1, right);
 }
 
-swap(a,piopointer,left);
-return left;
-</code></pre><p>}<br>public static void quickSort(int[] a, int left, int right) {</p>
-<pre><code>if(left &gt;= right)
-    return ;
-int pivotPos = partion(a, left, right);
-quickSort(a, left, pivotPos-1);
-quickSort(a, pivotPos+1, right);
-</code></pre><p>}</p>
-<p>public static void sort(int[] a) {</p>
-<pre><code>if(a == null || a.length == 0)
-    return ;
-quickSort(a, 0, a.length-1);
-</code></pre><p>}</p>
-<p>public static void swap(int[] a, int left, int right) {</p>
-<pre><code>int temp = a[left];
-a[left] = a[right];
-a[right] = temp;
-</code></pre><p>}</p>
-</li>
-</ol>
-<pre><code>public  static void main (String[] args){
+public static void sort(int[] a) {
+    if(a == null || a.length == 0)
+        return ;
+    quickSort(a, 0, a.length-1);
+}
+
+public static void swap(int[] a, int left, int right) {
+    int temp = a[left];
+    a[left] = a[right];
+    a[right] = temp;
+}
+
+
+public  static void main (String[] args){
 
 
     int [] array={1,2,5,1,2,7,9,1,4,6,8,9,12,45,5,78,9,45};
@@ -428,8 +432,23 @@ a[right] = temp;
     for(int i=0;i&lt;array.length;i++) {
         System.out.println(array[i]);
     }
-}
-</code></pre><p>}`</p>
+}}`
+</code></pre><p>#3.插入排序  #</p>
+<blockquote>
+<p>nizainali<br>njndjnfjndj<br>kdmkmdkmdk<br>dmmmkmkmk#<br>mdkmk</p>
+<blockquote>
+<p>kdmkmkmdkmkmk</p>
+</blockquote>
+</blockquote>
+<p><code><br>public  static void main(){</code></p>
+<p>} </p>
+<p>====</p>
+<ol>
+<li>dnvjf</li>
+<li>njn jj</li>
+</ol>
+<p>title：测试</p>
+<p>tags：<br>     -算法</p>
 
           
         
