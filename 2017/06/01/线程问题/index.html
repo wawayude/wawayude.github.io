@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java   String," />
+  <meta name="keywords" content="多线程," />
 
 
 
@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现">
-<meta name="keywords" content="java   String">
+<meta name="description" content="1.多线程有几种实现方法? 同步有几种实现方法? 多线程有两种实现方法，分别是继承 Thread 类与实现 Runnable 接口 同步的实现方面有两种，分别是 synchronized,wait 与 notify wait():使一个线程处于等待状态，并且释放所持有的对象的 lock。sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedExce">
+<meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="String 和 StringBuffer的区别">
-<meta property="og:url" content="http://wawayude.github.io/2017/06/01/String-和-StringBuffer的区别/index.html">
+<meta property="og:title" content="线程问题">
+<meta property="og:url" content="http://wawayude.github.io/2017/06/01/线程问题/index.html">
 <meta property="og:site_name" content="WAWAYU DE BLOG">
-<meta property="og:description" content="1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现">
-<meta property="og:updated_time" content="2017-06-01T03:20:31.331Z">
+<meta property="og:description" content="1.多线程有几种实现方法? 同步有几种实现方法? 多线程有两种实现方法，分别是继承 Thread 类与实现 Runnable 接口 同步的实现方面有两种，分别是 synchronized,wait 与 notify wait():使一个线程处于等待状态，并且释放所持有的对象的 lock。sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedExce">
+<meta property="og:updated_time" content="2017-06-01T05:36:02.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="String 和 StringBuffer的区别">
-<meta name="twitter:description" content="1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现">
+<meta name="twitter:title" content="线程问题">
+<meta name="twitter:description" content="1.多线程有几种实现方法? 同步有几种实现方法? 多线程有两种实现方法，分别是继承 Thread 类与实现 Runnable 接口 同步的实现方面有两种，分别是 synchronized,wait 与 notify wait():使一个线程处于等待状态，并且释放所持有的对象的 lock。sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedExce">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://wawayude.github.io/2017/06/01/String-和-StringBuffer的区别/"/>
+  <link rel="canonical" href="http://wawayude.github.io/2017/06/01/线程问题/"/>
 
 
 
 
 
-  <title>String 和 StringBuffer的区别 | WAWAYU DE BLOG</title>
+  <title>线程问题 | WAWAYU DE BLOG</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -294,7 +294,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wawayude.github.io/2017/06/01/String-和-StringBuffer的区别/">
+    <link itemprop="mainEntityOfPage" href="http://wawayude.github.io/2017/06/01/线程问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wawayu">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">String 和 StringBuffer的区别</h1>
+          <h1 class="post-title" itemprop="name headline">线程问题</h1>
         
 
         <div class="post-meta">
@@ -323,7 +323,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T09:53:09+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-01T13:26:05+08:00">
                 2017-06-01
               </time>
             
@@ -358,43 +358,115 @@
       
 
       
-        <p>  1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，<br>你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现了 equals 方法，<br><code>newString(“abc”).equals(newString(“abc”)<br></code></p>
-<p>的结果为 true,而 StringBuffer 没有实现equals 方法，<br>所以，<br><code>new StringBuffer(“abc”).equals(newStringBuffer(“abc”)<br></code></p>
-<p>的结果为 false。</p>
-<p>2.接着要举一个具体的例子来说明，我们要把1到100的所有数字拼起来，组成一个串。<br><code><br>StringBuffer stringbf = new StringBuffer();<br>for(int i=0;i<100;i++) {="" stringbf.append(i);="" }="" <="" code=""></100;i++)></code></p>
-<p>上面的代码效率很高，因为只创建了一个 StringBuffer 对象，而下面的代码效率很低，因为<br>创建了101个对象。<br><code><br>String str = new String();<br>for(int i=0;i<100;i++) {="" str="str" +="" i;="" }="" <="" code=""></100;i++)></code></p>
-<p>在讲两者区别时，应把循环的次数搞成10000，然后用 endTime-beginTime 来比较两者执<br>行的时间差异，最后还要讲讲 StringBuilder 与 StringBuffer 的区别。<br>String 覆盖了 equals 方法和 hashCode 方法，而 StringBuffer 没有覆盖 equals 方法和<br>hashCode 方法，所以，将 StringBuffer  对象存储进 Java  集合类中时会出现问题。</p>
-<p>3<br>     <code>String a = &quot;a1&quot;;  
-     String b = &quot;a&quot; + 1;  
-     System.out.println((a == b)); result = true  
-     String a = &quot;atrue&quot;;  
-      String b = &quot;a&quot; + &quot;true&quot;;  
-     System.out.println((a == b)); //result = true  
-      String a = &quot;a3.4&quot;;  
-    String b = &quot;a&quot; + 3.4;  
-    System.out.println((a == b)); //result = true</code></p>
-<p>JVM对于字符串常量的”+”号连接，将程序编译期，JVM就将常量字符串的”+”连接优化为连接后的值，拿”a” + 1来说，经编译器优化后在class中就已经是a1。在编译期其字符串常量的值就确定下来，故上面程序最终的结果都为true。 </p>
-<pre><code>` String a = &quot;ab&quot;;  
- String bb = &quot;b&quot;;  
-  String b = &quot;a&quot; + bb;  
- System.out.println((a == b)); //result = false  `
-</code></pre><p>  JVM对于字符串引用，由于在字符串的”+”连接中，有字符串引用存在，而引用的值在程序编译期是无法确定的，即”a” + bb无法被编译器优化，只有在程序运行期来动态分配并将连接后的新地址赋给b。所以上面程序的结果也就为false。</p>
-<p>   <code>String a = &quot;ab&quot;;  
-    final String bb = &quot;b&quot;;  
-    String b = &quot;a&quot; + bb;  
-    System.out.println((a == b)); //result = true</code></p>
-<p>和上面唯一不同的是bb字符串加了final修饰，对于final修饰的变量，它在编译时被解析为常量值的一个本地拷贝存储到自己的常量池中或嵌入到它的字节码流中。所以此时的”a” + bb和”a” + “b”效果是一样的。故上面程序的结果为true。</p>
-<p>  <code>String s=&quot;a&quot;+&quot;b&quot;+&quot;c&quot;;</code> 等价于<br><code>String s=&quot;abc&quot;;</code><br>  然而</p>
-<pre><code>`  String a=&quot;a&quot;;
-   String b=&quot;b&quot;;
-   String c=&quot;c&quot;;
-   String s=a+b+c;`
-</code></pre><p>结果不一样了</p>
-<pre><code>`   StringBuffer temp = new StringBuffer();    
-    temp.append(a).append(b).append(c);    
-    String s = temp.toString();`
-</code></pre><p>每做一次 + 就产生个StringBuilder对象，然后append后就扔掉。下次循环再到达时重新产生个StringBuilder对象，然后 append 字符串，如此循环直至结束。 如果我们直接采用 StringBuilder 对象进行 append 的话，我们可以节省 N - 1 次创建和销毁对象的时间。所以对于在循环中要进行字符串连接的应用，一般都是用StringBuffer或StringBulider对象来进行 append操作。</p>
+        <h2 id="1-多线程有几种实现方法-同步有几种实现方法"><a href="#1-多线程有几种实现方法-同步有几种实现方法" class="headerlink" title="1.多线程有几种实现方法? 同步有几种实现方法?"></a>1.多线程有几种实现方法? 同步有几种实现方法?</h2><p> 多线程有两种实现方法，分别是继承 Thread 类与实现 Runnable 接口<br> 同步的实现方面有两种，分别是 synchronized,wait 与 notify</p>
+<p>wait():使一个线程处于等待状态，并且释放所持有的对象的 lock。<br>sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉<br>InterruptedException(中断异常)异常。<br>notify():唤醒一个处于等待状态的线程，注意的是在调用此方法的时候，并不能确切的唤醒<br>某一个等待状态的线程，而是由 JVM 确定唤醒哪个线程，而且不是按优先级。<br>notityall():唤醒所有处入等待状态的线程，注意并不是给所有唤醒线程一个对象的锁，而是<br>让它们竞争。</p>
+<p>2.当一个线程进入一个对象的一个 一个 synchronized 方法后，其它线程是否可 方法后，其它线程是否可进入此对象的其它方法 进入此对象的其它方法?<br>-<br>分几种情况：</p>
+<ol>
+<li>其他方法前是否加了 synchronized 关键字，如果没加，则能。</li>
+<li><p>如果这个方法内部调用了 wait，则可以进入其他 synchronized 方法</p>
+</li>
+<li><p>如果其他个方法都加了 synchronized 关键字，并且内部没有调用 wait，则不能。<br>牛客网-程序员笔试面试题库，程序员求职备考网站 http://w w w .now coder.com</p>
+</li>
+<li><p>如果其他方法是 static，它用的同步锁是当前类的字节码，与非静态的方法不能同步，因为非静态的方法用的是 this。</p>
+</li>
+<li><h2 id="线程的基本概念、线程的基本状态以及状态之间的关系-线程的基本概念、线程的基本状态以及状态之间的关系"><a href="#线程的基本概念、线程的基本状态以及状态之间的关系-线程的基本概念、线程的基本状态以及状态之间的关系" class="headerlink" title="线程的基本概念、线程的基本状态以及状态之间的关系 线程的基本概念、线程的基本状态以及状态之间的关系"></a>线程的基本概念、线程的基本状态以及状态之间的关系 线程的基本概念、线程的基本状态以及状态之间的关系</h2></li>
+</ol>
+<p>一个程序中可以有多条执行线索同时执行，一个线程就是程序中的一条执行线索，每个线程<br>上都关联有要执行的代码，即可以有多段程序代码同时运行，每个程序至少都有一个线程，<br>即 main 方法执行的那个线程。如果只是一个 cpu，它怎么能够同时执行多段程序呢？这是<br>从宏观上来看的，cpu 一会执行 a 线索，一会执行 b 线索，切换时间很快，给人的感觉是<br>a,b 在同时执行，好比大家在同一个办公室上网，只有一条链接到外部网线，其实，这条网<br>线一会为 a 传数据，一会为 b 传数据，由于切换时间很短暂，所以，大家感觉都在同时上<br>网。<br>状态：就绪，运行，synchronize 阻塞，wait 和 sleep 挂起，结束。wait 必须在 synchronized<br>内部调用。<br>调用线程的 start 方法后线程进入就绪状态，线程调度系统将就绪状态的线程转为运行状<br>态，遇到 synchronized 语句时，由运行状态转为阻塞，当 synchronized 获得锁后，由阻塞<br>转为运行，在这种情况可以调用 wait 方法转为挂起状态，当线程关联的代码执行完后，线<br>程变为结束状态。</p>
+<p>4.简述 synchronized 和 和 java.util.concurrent.locks.Lock  的异同？<br>-<br>主要相同点：Lock 能完成 synchronized 所实现的所有功能<br>主要不同点：Lock 有比 synchronized 更精确的线程语义和更好的性能。synchronized 会自<br>动释放锁，而 Lock 一定要求程序员手工释放，并且必须在 finally 从句中释放。Lock 还有更<br>强大的功能，例如，它的 tryLock 方法可以非阻塞方式去拿锁。</p>
+<p>5.设计 4  个线程，其中两个线程每次对 j  增加 1 ，另外两个线程对 j 每次减少 每次减少1 。写出程序<br>-</p>
+<pre><code>`package com.thread;
 
+ /**
+  * Created by wawayu on 2017/6/1.
+ */
+ public class Mytest2  {
+private int j=100;
+
+public static void main(String args[]){
+    Mytest2 tt=new Mytest2();
+    Inc inc=tt.new Inc();
+    Dec dec=tt.new Dec();
+    for(int i=0;i&lt;2;i++){
+        Thread t=new Thread(inc);
+        t.start();
+        Thread t1 =new Thread(dec);
+        t1.start();
+    }
+}
+private synchronized void inc(){
+    j++;
+    System.out.println(Thread.currentThread().getName()+&quot;-inc:&quot;+j);
+}
+private synchronized void dec(){
+    j--;
+    System.out.println(Thread.currentThread().getName()+&quot;-dec:&quot;+j);
+}
+class Inc implements Runnable{
+    public void run(){
+        for(int i=0;i&lt;1000;i++){
+            inc();
+        }
+    }
+}
+class Dec implements Runnable{
+    public void run(){
+        for(int i=0;i&lt;1000;i++){
+            dec();
+        }
+    }
+}
+</code></pre><p>}<br>`</p>
+<p>或者</p>
+<pre><code>`public class Mymodel {
+
+private  int j=100;
+public  synchronized void sub()
+{
+    j--;
+    System.out.println(Thread.currentThread().getName()+&quot;-sub:&quot;+j);
+}
+public synchronized void add()
+{
+    j++;
+    System.out.println(Thread.currentThread().getName()+&quot;-add:&quot;+j);
+}
+}`
+
+
+
+`public class MyTest {
+Mymodel mymodel =new Mymodel();
+public static  void  main(String args[])
+{
+
+    new MyTest().call();
+}
+public void call()
+{
+    for(int i=0;i&lt;2;i++)
+    {
+        new Thread(
+                new Runnable(){
+                    public void run(){
+                        for(int K=0;K&lt;10000;K++){
+                            mymodel.add();
+                        }
+                    }
+                }
+         ).start();
+        new Thread(
+                new Runnable(){
+                    public void run(){
+                        for(int K=0;K&lt;10000;K++){
+                            mymodel.sub();
+                        }
+                    }
+                }
+        ).start();
+    }
+}
+}`
+</code></pre>
       
     </div>
 
@@ -423,7 +495,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java-String/" rel="tag"># java   String</a>
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
           
         </div>
       
@@ -436,8 +508,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/31/排序算法/" rel="next" title="排序算法">
-                <i class="fa fa-chevron-left"></i> 排序算法
+              <a href="/2017/06/01/String-和-StringBuffer的区别-1/" rel="next" title="String 和 StringBuffer的区别">
+                <i class="fa fa-chevron-left"></i> String 和 StringBuffer的区别
               </a>
             
           </div>
@@ -446,8 +518,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/01/String-和-StringBuffer的区别-1/" rel="prev" title="String 和 StringBuffer的区别">
-                String 和 StringBuffer的区别 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/01/线程问题-1/" rel="prev" title="线程问题">
+                线程问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -495,8 +567,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -549,6 +630,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-多线程有几种实现方法-同步有几种实现方法"><span class="nav-number">1.</span> <span class="nav-text">1.多线程有几种实现方法? 同步有几种实现方法?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的基本概念、线程的基本状态以及状态之间的关系-线程的基本概念、线程的基本状态以及状态之间的关系"><span class="nav-number">2.</span> <span class="nav-text">线程的基本概念、线程的基本状态以及状态之间的关系 线程的基本概念、线程的基本状态以及状态之间的关系</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
