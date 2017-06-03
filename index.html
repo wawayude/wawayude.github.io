@@ -478,46 +478,16 @@
 
       
         
-          
-            <p>  1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，<br>你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现了 equals 方法，<br><code>newString(“abc”).equals(newString(“abc”)<br></code></p>
+          <p>  1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，<br>你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现了 equals 方法，<br><code>newString(“abc”).equals(newString(“abc”)<br></code></p>
 <p>的结果为 true,而 StringBuffer 没有实现equals 方法，<br>所以，<br><code>new StringBuffer(“abc”).equals(newStringBuffer(“abc”)<br></code></p>
 <p>的结果为 false。</p>
-<p>&lt;!–more&gt;</p>
-<p>2.接着要举一个具体的例子来说明，我们要把1到100的所有数字拼起来，组成一个串。<br><code><br>StringBuffer stringbf = new StringBuffer();<br>for(int i=0;i<100;i++) {="" stringbf.append(i);="" }="" <="" code=""></100;i++)></code></p>
-<p>上面的代码效率很高，因为只创建了一个 StringBuffer 对象，而下面的代码效率很低，因为<br>创建了101个对象。<br><code><br>String str = new String();<br>for(int i=0;i<100;i++) {="" str="str" +="" i;="" }="" <="" code=""></100;i++)></code></p>
-<p>在讲两者区别时，应把循环的次数搞成10000，然后用 endTime-beginTime 来比较两者执<br>行的时间差异，最后还要讲讲 StringBuilder 与 StringBuffer 的区别。<br>String 覆盖了 equals 方法和 hashCode 方法，而 StringBuffer 没有覆盖 equals 方法和<br>hashCode 方法，所以，将 StringBuffer  对象存储进 Java  集合类中时会出现问题。</p>
-<p>3<br>     <code>String a = &quot;a1&quot;;  
-     String b = &quot;a&quot; + 1;  
-     System.out.println((a == b)); result = true  
-     String a = &quot;atrue&quot;;  
-      String b = &quot;a&quot; + &quot;true&quot;;  
-     System.out.println((a == b)); //result = true  
-      String a = &quot;a3.4&quot;;  
-    String b = &quot;a&quot; + 3.4;  
-    System.out.println((a == b)); //result = true</code></p>
-<p>JVM对于字符串常量的”+”号连接，将程序编译期，JVM就将常量字符串的”+”连接优化为连接后的值，拿”a” + 1来说，经编译器优化后在class中就已经是a1。在编译期其字符串常量的值就确定下来，故上面程序最终的结果都为true。 </p>
-<pre><code>` String a = &quot;ab&quot;;  
- String bb = &quot;b&quot;;  
-  String b = &quot;a&quot; + bb;  
- System.out.println((a == b)); //result = false  `
-</code></pre><p>  JVM对于字符串引用，由于在字符串的”+”连接中，有字符串引用存在，而引用的值在程序编译期是无法确定的，即”a” + bb无法被编译器优化，只有在程序运行期来动态分配并将连接后的新地址赋给b。所以上面程序的结果也就为false。</p>
-<p>   <code>String a = &quot;ab&quot;;  
-    final String bb = &quot;b&quot;;  
-    String b = &quot;a&quot; + bb;  
-    System.out.println((a == b)); //result = true</code></p>
-<p>和上面唯一不同的是bb字符串加了final修饰，对于final修饰的变量，它在编译时被解析为常量值的一个本地拷贝存储到自己的常量池中或嵌入到它的字节码流中。所以此时的”a” + bb和”a” + “b”效果是一样的。故上面程序的结果为true。</p>
-<p>  <code>String s=&quot;a&quot;+&quot;b&quot;+&quot;c&quot;;</code> 等价于<br><code>String s=&quot;abc&quot;;</code><br>  然而</p>
-<pre><code>`  String a=&quot;a&quot;;
-   String b=&quot;b&quot;;
-   String c=&quot;c&quot;;
-   String s=a+b+c;`
-</code></pre><p>结果不一样了</p>
-<pre><code>`   StringBuffer temp = new StringBuffer();    
-    temp.append(a).append(b).append(c);    
-    String s = temp.toString();`
-</code></pre><p>每做一次 + 就产生个StringBuilder对象，然后append后就扔掉。下次循环再到达时重新产生个StringBuilder对象，然后 append 字符串，如此循环直至结束。 如果我们直接采用 StringBuilder 对象进行 append 的话，我们可以节省 N - 1 次创建和销毁对象的时间。所以对于在循环中要进行字符串连接的应用，一般都是用StringBuffer或StringBulider对象来进行 append操作。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/01/String-和-StringBuffer的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -626,60 +596,16 @@
 
       
         
-          
-            <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><p>#1.  选择排序</p>
+          <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><p>#1.  选择排序</p>
 <pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"> public class select &#123;</div><div class="line">   public   static  void main(String [] args)</div><div class="line"></div><div class="line">&#123;</div><div class="line">    int a[]=&#123;1,3,5,9,10,27,19,20,4,10&#125;;</div><div class="line">    for(int i=0;i&lt;a.length;i++)</div><div class="line">    &#123;</div><div class="line">        for(int j=i+1;j&lt;a.length;j++)</div><div class="line">        &#123;</div><div class="line">            if(a[i]&gt;a[j])&#123;</div><div class="line">                int temp=a[i];</div><div class="line">                a[i]=a[j];</div><div class="line">                a[j]=temp;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    for(int i=0;i&lt;a.length;i++)&#123;</div><div class="line">        System.out.println(a[i]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><p>  &lt;!–more&gt;</p>
-<p>#2.  快速排序<br>    `<br>     public class Quick {</p>
-<pre><code>  public static int partion(int[] a,int left,int right)
-{
-    int pivokey=a[left];
-    int piopointer=left;
-    while (left&lt;right)
-    {
-        while (left&lt;right&amp;&amp;a[right]&gt;=pivokey)
-            right--;
-        while (left&lt;right&amp;&amp;a[left]&lt;pivokey)
-            left++;
-        swap(a,left,right);
-    }
-
-    swap(a,piopointer,left);
-    return left;
-}
-public static void quickSort(int[] a, int left, int right) {
-    if(left &gt;= right)
-        return ;
-    int pivotPos = partion(a, left, right);
-    quickSort(a, left, pivotPos-1);
-    quickSort(a, pivotPos+1, right);
-}
-
-public static void sort(int[] a) {
-    if(a == null || a.length == 0)
-        return ;
-    quickSort(a, 0, a.length-1);
-}
-
-public static void swap(int[] a, int left, int right) {
-    int temp = a[left];
-    a[left] = a[right];
-    a[right] = temp;
-}
-
-
-public  static void main (String[] args){
-
-
-    int [] array={1,2,5,1,2,7,9,1,4,6,8,9,12,45,5,78,9,45};
-    sort(array);
-    for(int i=0;i&lt;array.length;i++) {
-        System.out.println(array[i]);
-    }
-}}`
-</code></pre><p>#3.插入排序  #</p>
-
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/31/排序算法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
