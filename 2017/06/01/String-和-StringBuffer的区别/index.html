@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://wawayude.github.io/2017/06/01/String-和-StringBuffer的区别/index.html">
 <meta property="og:site_name" content="WAWAYU DE BLOG">
 <meta property="og:description" content="1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现">
-<meta property="og:updated_time" content="2017-06-01T03:20:31.331Z">
+<meta property="og:updated_time" content="2017-06-03T05:08:21.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="String 和 StringBuffer的区别">
 <meta name="twitter:description" content="1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现">
@@ -361,6 +361,7 @@
         <p>  1.JAVA 平台提供了两个类：String 和 StringBuffer，它们可以储存和操作字符串，即包含多个字符的字符数据。这个 String 类提供了数值不可改变的字符串。而这个 StringBuffer 类提供的字符串进行修改。当你知道字符数据要改变的时候你就可以使用 StringBuffer。典型地，<br>你可以使用 StringBuffers 来动态构造字符数据。另外，String 实现了 equals 方法，<br><code>newString(“abc”).equals(newString(“abc”)<br></code></p>
 <p>的结果为 true,而 StringBuffer 没有实现equals 方法，<br>所以，<br><code>new StringBuffer(“abc”).equals(newStringBuffer(“abc”)<br></code></p>
 <p>的结果为 false。</p>
+<p>&lt;!–more&gt;</p>
 <p>2.接着要举一个具体的例子来说明，我们要把1到100的所有数字拼起来，组成一个串。<br><code><br>StringBuffer stringbf = new StringBuffer();<br>for(int i=0;i<100;i++) {="" stringbf.append(i);="" }="" <="" code=""></100;i++)></code></p>
 <p>上面的代码效率很高，因为只创建了一个 StringBuffer 对象，而下面的代码效率很低，因为<br>创建了101个对象。<br><code><br>String str = new String();<br>for(int i=0;i<100;i++) {="" str="str" +="" i;="" }="" <="" code=""></100;i++)></code></p>
 <p>在讲两者区别时，应把循环的次数搞成10000，然后用 endTime-beginTime 来比较两者执<br>行的时间差异，最后还要讲讲 StringBuilder 与 StringBuffer 的区别。<br>String 覆盖了 equals 方法和 hashCode 方法，而 StringBuffer 没有覆盖 equals 方法和<br>hashCode 方法，所以，将 StringBuffer  对象存储进 Java  集合类中时会出现问题。</p>
