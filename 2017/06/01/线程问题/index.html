@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://wawayude.github.io/2017/06/01/线程问题/index.html">
 <meta property="og:site_name" content="WAWAYU DE BLOG">
 <meta property="og:description" content="#多线程有几种实现方法? 同步有几种实现方法? 多线程有两种实现方法，分别是继承 Thread 类与实现 Runnable 接口 同步的实现方面有两种，分别是 synchronized,wait 与 notify wait():使一个线程处于等待状态，并且释放所持有的对象的 lock。sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedExcep">
-<meta property="og:updated_time" content="2017-06-03T05:07:19.257Z">
+<meta property="og:updated_time" content="2017-06-03T05:13:27.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程问题">
 <meta name="twitter:description" content="#多线程有几种实现方法? 同步有几种实现方法? 多线程有两种实现方法，分别是继承 Thread 类与实现 Runnable 接口 同步的实现方面有两种，分别是 synchronized,wait 与 notify wait():使一个线程处于等待状态，并且释放所持有的对象的 lock。sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedExcep">
@@ -376,7 +376,7 @@
 <h2 id="设计-4-个线程，其中两个线程每次对-j-增加-1-，另外两个线程对-j-每次减少-每次减少1-写出程序"><a href="#设计-4-个线程，其中两个线程每次对-j-增加-1-，另外两个线程对-j-每次减少-每次减少1-写出程序" class="headerlink" title="#设计 4  个线程，其中两个线程每次对 j  增加 1 ，另外两个线程对 j 每次减少 每次减少1 写出程序"></a>#设计 4  个线程，其中两个线程每次对 j  增加 1 ，另外两个线程对 j 每次减少 每次减少1 写出程序</h2><p>##</p>
 <pre><code>`package com.thread;
 
- /**
+**
   * Created by wawayu on 2017/6/1.
  */
  public class Mytest2  {
@@ -417,9 +417,9 @@ class Dec implements Runnable{
 }
 </code></pre><p>}<br>`</p>
 <p>##或者</p>
-<pre><code>`public class Mymodel {
-
-private  int j=100;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<p>##public class Mymodel {</p>
+<pre><code>private  int j=100;
 public  synchronized void sub()
 {
     j--;
@@ -430,7 +430,8 @@ public synchronized void add()
     j++;
     System.out.println(Thread.currentThread().getName()+&quot;-add:&quot;+j);
 }
-}`
+}
+​```
 
 
 
@@ -508,7 +509,7 @@ public void call()
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/01/String-和-StringBuffer的区别-1/" rel="next" title="String 和 StringBuffer的区别">
+              <a href="/2017/06/01/String-和-StringBuffer的区别/" rel="next" title="String 和 StringBuffer的区别">
                 <i class="fa fa-chevron-left"></i> String 和 StringBuffer的区别
               </a>
             
@@ -517,10 +518,6 @@ public void call()
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/01/线程问题-1/" rel="prev" title="线程问题">
-                线程问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,7 +589,7 @@ public void call()
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
